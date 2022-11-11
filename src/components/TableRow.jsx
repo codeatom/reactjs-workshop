@@ -3,18 +3,13 @@ import TableAction from './TableAction'
 
 
 const TableRow = (props) => {
-
-    const showStudentDeatails = () => {
-        {/*ToDo*/}
-    };
-
     return (
         <table className="table table-hover">
             <tbody>
                 {
                     props.studentList.map(
                         student =>
-                            <tr key={student.id}>
+                            <tr key={student.id} className='center-text'>
                                 <td>{student.firstName} </td>
                                 <td>{student.lastName}</td>
                                 <td>{student.age}</td>
@@ -23,7 +18,7 @@ const TableRow = (props) => {
                                 <td>
                                     <TableAction
                                       studentId={student.id}
-                                      showStudentDeatails={showStudentDeatails}
+                                      showStudentDetails={props.showStudentDetails}
                                     />
                                 </td>
                             </tr>

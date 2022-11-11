@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import TableHeader from './TableHeader'
 import TableRow from './TableRow'
+import ShowStudentDetails from './ShowStudentDetails'
 
 
 const DataTable = (props) => {
     const [studentList, setStudentList] = useState([]);
-    
+    const [student, setStudent] = useState({});
+    const [showDetails, setShowDetails] = useState(false);
+
     useEffect(() => {
         initStudentList();
     }, []);
@@ -21,13 +24,39 @@ const DataTable = (props) => {
         setStudentList(students);
     };
 
+    const showStudentDetails = (id) => {
+        setStudent(studentList[id - 1]);
+        setShowDetails(true);
+    }
+
+    const hideStudentDetails = (id) => {
+        setShowDetails(false);
+    }
+
+    const main =
+        showDetails ? (
+            <div>
+                <ShowStudentDetails
+                    student={student}
+                    hideStudentDetails={hideStudentDetails}
+                />
+            </div>
+        ) :
+            (
+                <div>
+                    <TableHeader />
+                    <TableRow
+                        studentList={studentList}
+                        showStudentDetails={showStudentDetails}
+                    />
+                </div>
+            );
+
+
     return (
         <div>
             <div className='container'>
-                <TableHeader />
-                <TableRow
-                    studentList={studentList}
-                />
+                {main}
             </div>
         </div>
     );
