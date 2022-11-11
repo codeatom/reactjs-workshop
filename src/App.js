@@ -1,9 +1,23 @@
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import DataTable from './components/DataTable';
 
 function App() {
   return (
-    <div className='center-text'>
-      <h1>Hello from react</h1>
+    <div>
+      <div className='center-text'>
+        <Header />
+      </div>
+
+      <div className='center-text'>
+        <DataTable />
+      </div>
+
+      <div className='center-text'>
+        <Footer />
+      </div>
+
     </div>
   );
 }
