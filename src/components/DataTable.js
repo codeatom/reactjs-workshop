@@ -43,13 +43,13 @@ const DataTable = (props) => {
             </div>
         ) :
             (
-                <div>
+                <table className="table table-hover mt-5">
                     <TableHeader />
                     <TableRow
                         studentList={studentList}
                         showStudentDetails={showStudentDetails}
                     />
-                </div>
+                </table>
             );
 
 
